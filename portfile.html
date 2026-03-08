@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>المهندس علي نجم | Front-End Developer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      direction: rtl;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: transparent;
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+      animation: fadeInDown 1s ease;
+    }
+    header p {
+      font-size: 1.2em;
+      color: #ddd;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    h2 {
+      border-right: 5px solid #00b4d8;
+      padding-right: 10px;
+      margin-bottom: 15px;
+      color: #90e0ef;
+    }
+
+    .contact a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      background: linear-gradient(45deg, #00b4d8, #0077b6);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+    .contact a:hover {
+      background: linear-gradient(45deg, #0077b6, #023e8a);
+      transform: scale(1.05);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      transition: transform 0.4s;
+    }
+    .gallery img:hover {
+      transform: scale(1.08);
+    }
+
+    /* زر الوضع المظلم */
+    #darkModeBtn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 12px 20px;
+      background: #00b4d8;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    #darkModeBtn:hover {
+      background: #0077b6;
+    }
+
+    /* أنيميشن */
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* الوضع المظلم */
+    .dark-mode {
+      background: #121212;
+      color: #eee;
+    }
+    .dark-mode h2 {
+      color: #00b4d8;
+    }
+    .dark-mode .card {
+      background: rgba(255,255,255,0.08);
+    }
+  </style>
+</head>
+<body>
+  <button id="darkModeBtn">🌙 الوضع المظلم</button>
+
+  <header>
+    <h1>المهندس علي نجم</h1>
+    <p>Front-End Developer | مصمم مواقع ويب</p>
+  </header>
+
+  <section>
+    <div class="card">
+      <h2>عنّي</h2>
+      <p>أنا مطوّر واجهات أمامية متخصص في تصميم مواقع ويب حديثة ومتجاوبة باستخدام HTML, CSS, JavaScript و React. شغفي هو تحويل الأفكار إلى واجهات أنيقة وسهلة الاستخدام.</p>
+    </div>
+
+    <div class="card">
+      <h2>أعمالي</h2>
+      <ul>
+        <li>تصميم صفحات هبوط لشركات ناشئة.</li>
+        <li>تطوير واجهات متاجر إلكترونية.</li>
+        <li>بناء لوحات تحكم تفاعلية.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>معرض أعمالي</h2>
+      <div class="gallery">
+        <img src="img1.jpg" alt="مشروع 1">
+        <img src="img2.jpg" alt="مشروع 2">
+        <img src="img3.jpg" alt="مشروع 3">
+        <img src="img4.jpg" alt="مشروع 4">
+      </div>
+    </div>
+
+    <div class="card contact">
+      <h2>للتواصل</h2>
+      <a href="https://wa.me/201288383044" target="_blank">واتساب</a>
+      <a href="mailto:ali.alisaidnegm68@gmail.com">إيميل</a>
+    </div>
+  </section>
+
+  <script>
+    // زر الوضع المظلم مع حفظ في LocalStorage
+    const btn = document.getElementById("darkModeBtn");
+    btn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      btn.textContent = isDark ? "☀️ الوضع العادي" : "🌙 الوضع المظلم";
+      localStorage.setItem("darkMode", isDark);
+    });
+
+    // استرجاع الوضع عند إعادة تحميل الصفحة
+    window.onload = function() {
+      if(localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+        btn.textContent = "☀️ الوضع العادي";
+      }
+    }
+  </script>
+</body>
+</html>
